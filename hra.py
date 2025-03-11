@@ -188,7 +188,7 @@ def show_confirmation_dialog(SCREEN):
     dialog_surface.fill((255, 255, 255))
     pygame.draw.rect(dialog_surface, (0, 0, 0), (0, 0, 400, 200), 5)
 
-    message = font.render("Vážně chce hru ukončit?", True, (0, 0, 0))
+    message = font.render("Ukončit hru?", True, (0, 0, 0))
     yes_text = font.render("Ano", True, (255, 0, 0))
     no_text = font.render("Ne", True, (255, 0, 0))
 
@@ -260,7 +260,7 @@ def main_menu():
     BLACK = (0, 0, 0)
     font = pygame.font.SysFont("arial", 30)
     
-    player_name = get_latest_username()
+    player_name = ""
     input_active = True
     while input_active:
         SCREEN.fill(BLACK)
@@ -272,8 +272,9 @@ def main_menu():
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                if show_confirmation_dialog(SCREEN):
+                    pygame.quit()
+                    quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN and player_name:
                     input_active = False
@@ -340,12 +341,12 @@ def save_latest_username(username):
         file.write(f"{username}")
 
 # Získá poslední použité uživatelské jméno ze souboru
-def get_latest_username():
-    try:
-        with open("latest_username.txt", "r") as file:
-            return file.readline()
-    except FileNotFoundError:
-        return ""
+# def get_latest_username():
+#     try:
+#         with open("latest_username.txt", "r") as file:
+#             return file.readline()
+#     except FileNotFoundError:
+#         return ""
 
 # Nastaví skóre uživatele v databázi
 def set_database_score(score, time):
