@@ -126,8 +126,8 @@ function get_table_row($name, $user_id, $score, $time)
 // Odstraní skóre z databáze
 function remove_score($user_id)
 {
-    global $database_table_scores;
-    $sql = "DELETE FROM `" . $database_table_scores . "` WHERE user_id = " . $user_id;
+    global $database_table_users;
+    $sql = "DELETE FROM `" . $database_table_users . "` WHERE user_id = " . $user_id;
     global $database_connection;
     $database_connection->query($sql);
     header("Location: index.php?alert=delete");
