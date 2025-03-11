@@ -49,7 +49,7 @@ require_once('core.php');
   <!-- Lišta na horní části stránky -->
   <nav class="navbar navbar-expand-sm">
     <div class="container">
-      <a href="https://new.spskladno.cz"><img src="assets/logo.png" alt="Logo" height="50" /></a>
+      <a href="https://new.spskladno.cz"><img src="https://new.spskladno.cz/wp-content/uploads/2020/08/vos-sps-kladno-logo-5.png" alt="Logo" height="50" /></a>
       <h1 class="title">The Snake</h1>
 
       <?php if (!isset($_SESSION['user'])): ?>
@@ -89,7 +89,7 @@ require_once('core.php');
         <li>Zpracování a vizualizace dat pomocí Pygame nebo knihoven pro generování grafů.</li>
         <li>Práce s GITem, dokumentace kódu a uložení projektu na repozitář.</li>
         <li>Projekt je postaven na technologiích Python, HTML/CSS/JavaScript/Bootstrap, PHP a MariaDB, s důrazem na modularitu, bezpečnost a efektivní práci s databázemi.</li>
-        <li>Celý projekt je dokumentován na <a href="https://spsrakovnik.tech/macek.mi.2021/NaDoma/Snake/">TOMTO</a> gitu.</li>
+        <li>Celý projekt je dokumentován na <a href="https://github.com/Zdvorik/maturitni_projekt">TOMTO</a> gitu.</li>
       </ul>
       </p>
       <img src="assets/diagram.png" alt="Diagram" class="mx-auto d-block img-responsive diagram" />
