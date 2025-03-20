@@ -92,7 +92,9 @@ require_once('core.php');
         <li>Celý projekt je dokumentován na <a href="https://github.com/Zdvorik/maturitni_projekt">TOMTO</a> gitu.</li>
       </ul>
       </p>
-      <img src="assets/diagramsnk.png" alt="Diagram" class="mx-auto d-block img-responsive diagram" />
+      <img src="assets/diagram.png" alt="Diagram" class="mx-auto d-block img-responsive diagram" />
+      <br>
+      <img src="assets/erMOdel.png" alt="e-r model" class="mx-auto d-block img-responsive diagram" />
     </div>
   </main>
 
