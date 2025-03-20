@@ -27,7 +27,7 @@ def databse_connect():
         global cursor
         cursor = conn.cursor()
         cursor.execute(f'CREATE TABLE IF NOT EXISTS `{user_table_name}` (user_id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(255))')
-        cursor.execute(f'CREATE TABLE IF NOT EXISTS `{score_table_name}` (user_id INT PRIMARY KEY, score INT, time INT, FOREIGN KEY (user_id) REFERENCES `{user_table_name}`(user_id) ON DELETE CASCADE ON UPDATE CASCADE)')
+        cursor.execute(f'CREATE TABLE IF NOT EXISTS `{score_table_name}` (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, score INT, time INT, FOREIGN KEY (user_id) REFERENCES `{user_table_name}`(user_id) ON DELETE CASCADE ON UPDATE CASCADE);')
         conn.commit()
         global connection
         connection = conn
@@ -328,7 +328,7 @@ def update_user_id(username):
 
 # Získá nejvyšší skóre uživatele z databáze
 def update_highest_score():
-    cursor.execute(f'SELECT score FROM `{score_table_name}` WHERE user_id = ?', (userID,))
+    cursor.execute(f'SELECT s.user_id, MAX(s.score) FROM `{score_table_name}` s JOIN `{user_table_name}` u ON s.user_id = u.user_id WHERE u.user_id = ? GROUP BY s.user_id;', (userID,))
     connection.commit()
     score = cursor.fetchone()
     if score is not None:
@@ -352,7 +352,7 @@ def save_latest_username(username):
 def set_database_score(score, time):
     if (score < highest_score):
         return
-    cursor.execute(f'INSERT INTO `{score_table_name}` (user_id, score, time) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE score = ?', (userID, score, time, score))
+    cursor.execute(f'INSERT INTO `{score_table_name}` (user_id, score, time) VALUES (?, ?, ?)', (userID, score, time))
     connection.commit()
 
 # Spustit hru
